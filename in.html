@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Product Popup</title>
+    <style>
+        .popup-container {
+            display: none; /* بداية إخفاء */
+            position: absolute; /* تحديد الموقع بشكل مطلق على الشاشة */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* خلفية شبه شفافة */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding-top: 30px;
+            padding-left: 14px;
+            border-radius: 5px;
+            width: 300px;
+            height: 415px;
+            z-index: 2;
+        }
+
+       .popup-close {
+            float: right;
+            cursor: pointer;
+        }
+
+         
+
+
+.open-popup {
+    background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: x-small;
+}
+
+
+
+       .col-xl-4,
+    .col-lg-4,
+    .col-md-6 {
+        padding-right: 4px; /* إزالة الحشو داخل الأعمدة */
+    }
+    .product1{
+        position: relative;
+        top: 173px;
+        left: 61%;
+
+    }
+    .product2{
+        position: relative;
+        top: 177px;
+        left: 82%;
+        
+    }
+    .product3{
+        position: relative;
+        top: 90px;
+        left: 62%;
+
+        
+    }
+    .product4{
+        position: relative;
+        left: 70%;
+        top: 68px;
+        
+    }
+    .product5{
+        position: relative;
+        top: 90px;
+        left: 47%;
+        
+    }
+    .product6{
+        position: relative;
+        left: 75%;
+        top: 127px;
+        
+    }
+    .container{
+        max-width: 100% !important;
+    }
+    .row{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .text{
+        font-size: x-large;
+        margin: 0%;
+
+    }
+    p{
+        font-size:14px;
+        margin-bottom: 5px;
+        margin-top: 6px;
+        color:  #000000b2;;
+    }
+    .colors{
+        height: 10%;
+        padding-right: 10px;
+  padding-left: 8px;
+  margin-bottom: 7px;
+    }
+    .color-box {
+        width: 50%;
+        z-index: 2;
+ 
+}
+.color-box button{
+    width:100% ; 
+    height: 100%;
+    border: 1px solid black;
+
+}
+
+.blue::before {
+    content: "";
+  transform: translateY(0%);
+  border: 1px solid black;
+  height: 44px;
+  position: absolute;
+  width: 5px;
+  background-color: white;
+
+}
+.black::before {
+    content: "";
+  transform: translateY(0%);
+  border: 1px solid black;
+  height: 44px;
+  position: absolute;
+  width: 5px;
+  background-color: black;
+
+}
+#animate {
+  width: 123px;
+  height: 44px;
+  background-color: white; /* اللون الافتراضي */
+  position: absolute;
+   /* وضع العنصر رأسيًا */
+  left: 0; /* وضع العنصر أفقيًا */
+  transition: all 0.4s ease; /* يجعل أي تغيير على الخصائص يحدث خلال 1 ثانية */
+}
+
+.buttons-container {
+      display: flex;
+      height: 44px;
+      z-index: 2;
+      width: 90%;
+    }
+
+    .btn {
+      font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.1s ease, color 0.1s ease;
+  height: 50px;
+  width: 107px;
+
+    }
+    .dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropbtn {
+            width: 90%;
+            text-align: left;
+            padding: 10px;
+            background-color: white;
+            color: black;
+            border: 1px solid;
+            font-size: 16px;
+            display: flex; /* استخدام flexbox */
+            align-items: center; /* محاذاة عمودية */
+            justify-content: space-between; /* جعل النص والسهم على الأطراف */
+        }
+
+        .dropbtn:hover {
+            background-color: #0056b3;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            background-color: white;
+            min-width: 90%;
+             z-index: 2;
+             border: 1px solid;
+             border-top: none;
+             transition:  opacity 0.5s ease;         
+                 opacity: 0;
+                 text-align: center;
+             
+             
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 2px 15px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown-content.show {
+            opacity: 1;
+        }
+        .dropbtn span {
+            display: inline-block;
+  transition: transform 0.5s ease;
+ 
+        }
+        .arrow{
+            border-left: 1px solid;
+            position: absolute;
+  right: 30px;
+  height: 44px;
+  width: 50px;
+  padding: 8px;
+    padding-left: 8px;
+  padding-left: 15px;
+
+        }
+
+        .dropbtn span.rotate {
+            transform: rotate(180deg); /* دوران السهم عند فتح القائمة */
+        }
+       .ADDcart{
+        position: relative;
+       }
+       .ADDcart button{
+        position: absolute;
+        top: 41px;
+        width: 90%;
+        height: 41px;
+        background-color: black;
+        color: white;
+       }
+    </style>
+
+
+</head>
+<body>
+    <div style="height: 500px;"></div>
+ <div class="container" style="position: absolute;">
+    <div class="row ">
+        <p class="text">Tisso Vison in the Wild</p>
+        <!-- المنتج 1 -->
+        <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="product-container">
+                <span class="open-popup product1" data-popup-id="product1">+</span>
+
+                <img src="img/WhatsApp Image 2025-01-20 at 19.29.06_93b0adb4.jpg" width="100%" height="320">
+
+                <div id="product1" class=" popup-container">
+
+                    <div class=" popup-content">
+                       <div class="d-flex" style="height: 128px;">
+                          <div class="p-1 ">
+
+                            <img src="img/WhatsApp Image 2025-01-20 at 19.29.06_93b0adb4.jpg" width="100" height="120">
+                          </div>    
+                          <div class="p-1">
+       
+                            <p style="color:  #000000b2;">Tailored Jacket<p>
+                            <h6>980,00€<h6>
+                            <p style="line-height: 1;color: #000000b2;;">This one-piece swimsuit is crafted from jersey featuring an allover micro Monogram motif in relief.</p>
+                            <div>
+                                <p></p>
+                            </div>
+                          </div>
+                       </div> 
+                       <p>Color</p>
+                            <div class="buttons-container" style="position: relative;">
+                              <div id="animate" style="position: absolute;"></div>
+                       <div class="color-box blue"><button id="button1" style="background-color: inherit ;" onclick="moveToRed()">white</button></div> 
+                       <div class="color-box black"> <button id="button2" style="background-color: inherit; " onclick="moveToBlue()">Black</button></div> 
+                        
+                               
+                            
+                        </div>
+                        <div>
+                        <p>Size</p>
+                     
+                          <div class="dropdown">
+                            <button class="dropbtn" onclick="toggleDropdown()">
+                                Choose your size
+                                <div class="arrow">
+                                    <span id="arrow">⮟</span> <!-- السهم في نفس السطر -->
+
+                                </div>
+                            </button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="#home">Home</a>
+                                <a href="#about">About</a>
+                                <a href="#contact">Contact</a>
+                            </div>
+                        </div>
+                        <div class="ADDcart">           
+                            <button>ADD TO CART →</button>
+                        </div>
+                    </div> 
+                </div>
+
+                </div>
+            </div>
+        </div>
+       
+        <!-- المنتج 2 -->
+        <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="product-container">
+                <span class="open-popup product2" data-popup-id="product2">+</span>
+                <img src="img/WhatsApp Image 2025-01-20 at 19.28.45_6cba9fa1.jpg" width="100%" height="320">
+                <div id="product2" class="popup-container">
+                    
+                    <div class=" popup-content">
+                        <div class="d-flex" style="height: 150px;">
+                           <div class="p-1 ">
+ 
+                             <img src="img/WhatsApp Image 2025-01-20 at 19.28.45_6cba9fa1.jpg" width="100" height="120">
+                           </div>    
+                           <div class="p-1">
+        
+                             <h4>Tailored Jacket</h4>
+                             <h6>980,00€</h6>
+                             <p>This one-piece swimsuit is crafted from jersey featuring an allover micro Monogram motif in relief.</p>
+                             <div>
+                                 <p></p>
+                             </div>
+                           </div>
+                        </div> 
+                        <label>Color</label>
+ 
+                   
+                         <div class="colors" style="display: block;">
+                             <button>Blue</button>
+                             <button>Black</button>
+                         </div>
+                         <label>Size</label>
+                         <select><option>S</option><option>M</option><option>L</option></select>
+                         <button>ADD TO CART →</button>
+                     </div>
+ 
+                </div>
+            </div>
+        </div>
+    
+        <!-- المنتج 3 -->
+        <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="product-container">
+                <span class="open-popup product3" data-popup-id="product3">+</span>
+
+                <img src="img/WhatsApp Image 2025-01-20 at 19.29.19_4ab702d1.jpg" width="100%" height="320">
+                <div id="product3" class="popup-container">
+             
+                    <div class=" popup-content">
+                        <div class="d-flex" style="height: 150px;">
+                           <div class="p-1 ">
+ 
+                             <img src="img/WhatsApp Image 2025-01-20 at 19.29.19_4ab702d1.jpg" width="100" height="120">
+                           </div>    
+                           <div class="p-1">
+        
+                             <h4>Tailored Jacket</h4>
+                             <h6>980,00€</h6>
+                             <p>This one-piece swimsuit is crafted from jersey featuring an allover micro Monogram motif in relief.</p>
+                             <div>
+                                 <p></p>
+                             </div>
+                           </div>
+                        </div> 
+                        <label>Color</label>
+ 
+                   
+                         <div class="colors" style="display: block;">
+                             <button>Blue</button>
+                             <button>Black</button>
+                         </div>
+                         <label>Size</label>
+                         <select><option>S</option><option>M</option><option>L</option></select>
+                         <button>ADD TO CART →</button>
+                     </div>
+ 
+                </div>
+            </div>
+        </div>
+    
+        <!-- المنتج 4 -->
+        <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="product-container">
+                <span class="open-popup product4" data-popup-id="product4">+</span>
+
+                <img src="img/WhatsApp Image 2025-01-20 at 19.29.31_57377913.jpg" width="100%" height="320">
+                <div id="product4" class="popup-container">
+              
+                    <div class=" popup-content">
+                        <div class="d-flex" style="height: 150px;">
+                           <div class="p-1 ">
+ 
+                             <img src="img/menu-4.jpg" width="100" height="120">
+                           </div>    
+                           <div class="p-1">
+        
+                             <h4>Tailored Jacket</h4>
+                             <h6>980,00€</h6>
+                             <p>This one-piece swimsuit is crafted from jersey featuring an allover micro Monogram motif in relief.</p>
+                             <div>
+                                 <p></p>
+                             </div>
+                           </div>
+                        </div> 
+                        <label>Color</label>
+ 
+                   
+                         <div class="colors" style="display: block;">
+                             <button>Blue</button>
+                             <button>Black</button>
+                         </div>
+                         <label>Size</label>
+                         <select><option>S</option><option>M</option><option>L</option></select>
+                         <button>ADD TO CART →</button>
+                     </div>
+ 
+                </div>
+            </div>
+        </div>
+    
+        <!-- المنتج 5 -->
+        <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="product-container">
+                <span class="open-popup product5" data-popup-id="product5">+</span>
+                <img src="img/WhatsApp Image 2025-01-20 at 19.29.45_568489b6.jpg" width="100%" height="320">
+                <div id="product5" class="popup-container">
+                  
+                    <div class=" popup-content">
+                        <div class="d-flex" style="height: 150px;">
+                           <div class="p-1 ">
+ 
+                             <img src="img/WhatsApp Image 2025-01-20 at 19.29.45_568489b6.jpg" width="100" height="120">
+                           </div>    
+                           <div class="p-1">
+        
+                             <h4>Tailored Jacket</h4>
+                             <h6>980,00€</h6>
+                             <p>This one-piece swimsuit is crafted from jersey featuring an allover micro Monogram motif in relief.</p>
+                             <div>
+                                 <p></p>
+                             </div>
+                           </div>
+                        </div> 
+                        <label>Color</label>
+ 
+                   
+                         <div class="colors" style="display: block;">
+                            <input type="button" value="Blue">
+                            <input type="button" value="Black">
+                         </div>
+                         <label>Size</label>
+                         <select><option>S</option><option>M</option><option>L</option></select>
+                         <button>ADD TO CART →</button>
+                     </div>
+ 
+                </div>
+            </div>
+        </div>
+    
+        <!-- المنتج 6 -->
+        <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="product-container">
+                <span class="open-popup product6" data-popup-id="product6">+</span>
+                <img src="img/WhatsApp Image 2025-01-20 at 19.30.00_09d54944.jpg" width="100%" height="320">
+                <div id="product6" class="popup-container">
+                
+                    <div class=" popup-content">
+                        <div class="d-flex" style="height: 150px;">
+                           <div class="p-1 ">
+ 
+                             <img src="img/WhatsApp Image 2025-01-20 at 19.30.00_09d54944.jpg" width="100" height="120">
+                           </div>    
+                           <div class="p-1">
+        
+                             <h4>Tailored Jacket</h4>
+                             <h6>980,00€</h6>
+                             <p>This one-piece swimsuit is crafted from jersey featuring an allover micro Monogram motif in relief.</p>
+                             <div>
+                                 <p></p>
+                             </div>
+                           </div>
+                        </div> 
+                        <label>Color</label>
+ 
+                   
+                         <div class="colors" style="display: block;">
+                             <button>Blue</button>
+                             <button>Black</button>
+                         </div>
+                         <label>Size</label>
+                         <select><option>S</option><option>M</option><option>L</option></select>
+                         <button>ADD TO CART →</button>
+                     </div>
+ 
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>  
+    
+    
+    <script>
+       const openPopups = document.querySelectorAll(".open-popup");
+       openPopups.forEach(openPopup => {
+           openPopup.addEventListener("click", () => {
+               const popupId = openPopup.dataset.popupId;
+               const popup = document.getElementById(popupId)
+               popup.style.display = "flex";
+           })
+       });
+
+       const popups = document.querySelectorAll(".popup-container");
+
+// إضافة مستمع الحدث على جميع الخلفيات
+popups.forEach(popup => {
+    popup.addEventListener("click", (event) => {
+        // التحقق إذا كان العنصر المستهدف هو الخلفية نفسها وليس محتويات النافذة
+        if (event.target === popup) {
+            popup.style.display = "none";
+        }
+    });
+});
+
+    </script>
+    <script>
+        function moveToBlue() {
+        const elem = document.getElementById("animate");
+        elem.style.left = "52%"; // تحريك العنصر إلى اليمين
+        elem.style.backgroundColor="black";
+        document.getElementById("button1").style.color="black";
+        document.getElementById("button2").style.color="white";
+
+
+        
+
+
+      }
+      
+      function moveToRed() {
+        const elem = document.getElementById("animate");
+        elem.style.left = "5px"; // إعادة العنصر إلى البداية
+        elem.style.backgroundColor="black";
+        document.getElementById("button1").style.color="white";
+        document.getElementById("button2").style.color="black";
+
+
+      }
+      /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function toggleDropdown() {
+            const dropdown = document.getElementById("myDropdown");
+            const arrow = document.getElementById("arrow");
+
+            // Toggle the dropdown menu
+            dropdown.classList.toggle("show");
+
+            // Rotate the arrow
+            if (dropdown.classList.contains("show")) {
+                arrow.classList.add("rotate"); // دوران السهم لأسفل
+            } else {
+                arrow.classList.remove("rotate"); // عودة السهم للأعلى
+            }
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener("click", function (event) {
+            if (!event.target.closest(".dropdown")) {
+                const dropdown = document.getElementById("myDropdown");
+                const arrow = document.getElementById("arrow");
+                dropdown.classList.remove("show");
+                arrow.classList.remove("rotate");
+            }
+        });
+
+      </script>
+
+</body>
+</html>
